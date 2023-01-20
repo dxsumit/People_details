@@ -1,0 +1,99 @@
+<nav class="navbar py-1" style="background-color: #6488ea;" data-bs-theme="dark">
+
+    <div class="container-fluid">
+        <h2 style="color: azure;"> People </h2>
+        <div class="d-flex">
+            <button (click)="addpeopleClick()" type="button" class="btn btn-outline-light p-1.5" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add People</button>
+        </div>
+    </div>
+
+</nav>
+
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> First Name </th>
+            <th scope="col"> Last Name </th>
+            <th scope="col"> Age </th>
+            <th scope="col"> Gender </th>
+            <th scope="col">  </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let each of allPeople">
+            <td> {{each._id}} </td>
+            <td> {{each.firstName}} </td>
+            <td> {{each.lastName}} </td>
+            <td> {{each.age}} </td>
+            <td> {{each.gender}} </td>
+
+            <td> <button (click)="editBtnClick(each)" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <fa-icon [ngStyle]="{'color': '#4d4dff'}" [icon]="faEditIcon"></fa-icon>  </button>
+                <!-- <button type="submit" class="btn btn-primary"> <fa-icon [icon]="faGearIcon"></fa-icon></button> -->
+                <button (click)="delete(each._id)" class="btn"> <fa-icon [ngStyle]="{'color': '#e32636'}" [icon]="faDeleteIcon"></fa-icon> </button>
+             </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<!-- Button trigger modal -->
+  
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Person</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        
+        
+        <!-- bootstrap form -->
+        <form [formGroup]="formValue">
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="firstName">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="lastName">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Age</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="age">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Gender</label>
+                <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="gender"> -->
+
+                <select class="form-select" aria-label="Default select example" formControlName="gender">
+                    <option selected value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                    <option value="Not Comfortable">Not Comfortable</option>
+                </select>
+                  
+            </div>
+            
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button id="closeModal" type="button" class="btn btn-outline-danger py-1 px-2" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="addBtn" type="button" (click)="add()" class="btn btn-success px-3">Add</button>
+        <button *ngIf="updateBtn" type="button" (click)="update()" class="btn btn-success py-1 px-3"> Update </button>
+    </div>
+    </div>
+</div>
+</div>
+  
+  
+

@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 6,
+      "firstName": "Himanshu",
+      "lastName": "Mohan",
+      "age": 20,
+      "gender": "Male"
+    },
+    {
+      "id": 8,
+      "firstName": "Rohna",
+      "lastName": "Klad",
+      "age": 87,
+      "gender": "Trans"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
